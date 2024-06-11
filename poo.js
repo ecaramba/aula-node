@@ -22,6 +22,13 @@ class Caneta {
 
 class Caneta2 extends Caneta {
     botaoApertado = false;
+
+    // sobreescrito
+    escrever(){
+        // acessa a classe pai
+        super.escrever();
+        console.log("escreveu caneta 2")
+    }
 }
 
 class Caneta3 extends Caneta2 {
@@ -47,10 +54,10 @@ if (bic3 == bic4)
 }
 
 // invocando o metodo
-bic1.escrever();
+// bic1.escrever();
 
 bic1.vazia = false;
 
-console.log(bic1, bic2, bic3, bic4)
+//console.log(bic1, bic2, bic3, bic4)
 bic5.escrever();
 console.log(bic5);
