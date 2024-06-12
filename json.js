@@ -10,4 +10,5 @@ var pessoa = {
     }
 };
 
-console.log(pessoa.andar());
+// console.log(pessoa.andar());
+module.exports = pessoa;

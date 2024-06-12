@@ -72,3 +72,5 @@ let idade = 123;
  idade = 321;
 
 console.log(idade);
+
+module.exports = soma;
