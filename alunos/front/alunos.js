@@ -20,20 +20,27 @@ $(document).ready(function(){
     $("#bt-salvar").click(function(){
 
         let nome = $("#nome").val();
+        let telefone = $("#telefone").val();
+        let email = $("#email").val();
 
-        $("#nome").removeClass("is-invalid");
-
-        let cep = /^[0-9]{5}-[0-9]{3}/gm;
-
-        if (cep.test(nome) == true){
-            alert("passou no teste")
-        } else {
-            alert("não passou");
-        }
+        $("#nome, #telefone, #email").removeClass("is-invalid");
+        
+        // expressão regular
+        let telefone_exp = /^\([0-9]{2}\)[0-9]{4,5}-[0-9]{4}$/gm;
+        let email_exp = /^[0-9a-zA-Z-._]+@[a-z0-9]+\.[a-z.]+$/gm;
 
         if (nome.trim().length <= 3 )
         {
             $("#nome").addClass("is-invalid");
+        }
+
+        if (telefone_exp.test(telefone) == false)
+        {
+            $("#telefone").addClass("is-invalid");
+        }
+        if (email_exp.test(email) == false)
+        {
+            $("#email").addClass("is-invalid");
         }
 
     }); // fim do bt-salvar
