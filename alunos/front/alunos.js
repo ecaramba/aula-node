@@ -22,6 +22,14 @@ $(document).ready(function(){
         let nome = $("#nome").val();
         let telefone = $("#telefone").val();
         let email = $("#email").val();
+        let cidade = $("#cidade").val();
+
+        let dados = {
+            nome: nome,
+            telefone: telefone,
+            email: email,
+            cidade: cidade
+        };
 
         $("#nome, #telefone, #email").removeClass("is-invalid");
         
@@ -43,6 +51,28 @@ $(document).ready(function(){
             $("#email").addClass("is-invalid");
         }
 
+        $.post("http://localhost:3003/cadastrar", dados, function(erro, resposta){
+            console.log(erro, resposta)
+        })
+
+
     }); // fim do bt-salvar
+
+    $("#telefone").keydown(function(ev){
+
+        
+        let validar = /[0-9-\(\)]/gm;
+        
+        if (ev.key == "Backspace")
+        {
+            return true;
+        }
+
+        if (validar.test(ev.key) == false)
+        {
+            return false;
+        }
+
+    }); // fim keydown
 
 });

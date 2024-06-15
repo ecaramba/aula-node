@@ -40,7 +40,11 @@ app.get("/alunos", function(req, res){
 
 app.get("/", function(req, res){
     res.send("Pagina inicial");
-})
+});
+
+app.post("/cadastrar", function(req, res){
+    res.send("dados enviados");
+});
 
 app.listen(3003, function(){
     console.log("servidor iniciado");
