@@ -1,39 +1,26 @@
 const express = require("express");
 const cors = require("cors");
+const mongodb = require("mongodb");
+
+const url_con = "mongodb+srv://aulanode:node123@turma-junho.68fqkvo.mongodb.net/";
+const database = "edir";
+
+const bd = new mongodb.MongoClient(url_con);
 
 const app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
 
 app.use(cors());
 
 // router -> rota
-app.get("/alunos", function(req, res){
+app.get("/alunos", async function(req, res){
 
-    let lista = [
-        {
-            nome: "Pedro",
-            email: "pedro@aluno.com",
-            cidade: "Curitiba",
-            telefone: "(11)1234-4321"
-        },
-        {
-            nome: "Mauro",
-            email: "mauro@gmail.com",
-            cidade: "Pinhais",
-            telefone: "(31)2222-4321"
-        },
-        {
-            nome: "Luiz",
-            email: "luiz@abc.com",
-            cidade: "Curitiba",
-            telefone: "(21)5555-4321"
-        },
-        {
-            nome: "Maria",
-            email: "maria@gmail.com",
-            cidade: "Araucaria",
-            telefone: "(11)5466-4321"
-        }
-    ];
+    const pasta = bd.db(database).collection("alunos");
+    let retorno = await pasta.find({}).sort({nome: 1, cidade: 1});
+
+    let lista = await retorno.toArray();
 
     res.json(lista);
 });
@@ -43,7 +30,8 @@ app.get("/", function(req, res){
 });
 
 app.post("/cadastrar", function(req, res){
-    res.send("dados enviados");
+    
+    res.json(req.body);
 });
 
 app.listen(3003, function(){
