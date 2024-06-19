@@ -78,9 +78,134 @@
 
             <!-- conteudo -->
             <div class="col-8 p-3 mt-3">
-                
-                
 
+                <div>
+                    <button data-bs-toggle="modal" data-bs-target="#modal-cadastrar" class="btn btn-success">Cadastrar Novo</button>
+
+                    <!-- Modal -->
+<div class="modal fade" id="modal-cadastrar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar novo serviço</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+            <div class="mb-3">
+                <label class="form-label">Nome do Serviço</label>
+                <input class="form-control" type="text" />
+            </div>
+
+            <div>
+                <label class="form-label">Preço</label>
+            </div>
+            <div class="mb-3 input-group">
+
+                <span class="input-group-text">R$</span>
+                <input class="form-control" type="text" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Funcionario</label>
+                <input class="form-control" type="text" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Tipo do Serviço</label>
+                
+                <div class="form-check">
+                    <input class="form-check-input" name="tipo" type="radio"/>
+                    <label class="form-check-label">Pet</label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" name="tipo" type="radio"/>
+                    <label class="form-check-label">Veterinario</label>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+                </div>
+
+                <table class="table">
+                    <tr>
+                        <th>Serviço</th>
+                        <th>Preço</th>
+                        <th>Funcionario</th>
+                        <th>Tipo</th>
+                        <th>Ação</th>
+                    </tr>
+                    <tr>
+                        <td>Banho</td>
+                        <td>R$ 30.00</td>
+                        <td>Maria</td>
+                        <td>Pet</td>
+                        <td>
+                            <button class="btn btn-outline-secondary">Alterar</button>
+                            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modal-delete" >Deletar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Banho e tosa</td>
+                        <td>R$ 50.00</td>
+                        <td>Maria</td>
+                        <td>Pet</td>
+                        <td>
+                            <button class="btn btn-outline-secondary">Alterar</button>
+                            <button class="btn btn-outline-danger">Deletar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Consulta</td>
+                        <td>R$ 90.00</td>
+                        <td>Ana</td>
+                        <td>Veterinario</td>
+                        <td>
+                            <button class="btn btn-outline-secondary">Alterar</button>
+                            <button class="btn btn-outline-danger">Deletar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Vacinas</td>
+                        <td>R$ 80.00</td>
+                        <td>Ana</td>
+                        <td>Vet</td>
+                        <td>
+                            <button class="btn btn-outline-secondary">Alterar</button>
+                            <button class="btn btn-outline-danger">Deletar</button>
+                        </td>
+                    </tr>
+                </table>
+
+                <!-- modal delete -->
+                <div id="modal-delete" class="modal" tabindex="-1">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">DELETAR</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <p>Confirma a remoção do serviço?</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                          <button type="button" class="btn btn-primary">Confirmar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                
+            </div>
         </div>
 
     </div>
