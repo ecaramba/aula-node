@@ -4,13 +4,24 @@
 // Update -> alterar
 // Delete -> Deletar
 
+const mongodb = require("mongodb");
+const url_con = "mongodb+srv://aulanode:node123@turma-junho.68fqkvo.mongodb.net/";
+const database = "edir";
+
+const mongo = new mongodb.MongoClient(url_con);
+const db =  mongo.db(database).collection("servicos");
+
 /**
  * Cadastra um novo serviço
  * @param {object} dados 
  */
-function cadastrar(dados)
+async function cadastrar(dados)
 {
 
+    dados.data_cadastro = new Date();
+
+    let retorno = await db.insertOne(dados);
+    return retorno;
 }
 
 /**
@@ -35,7 +46,15 @@ function alterar(id, novo)
 /**
  * Lista todos os serviços
  */
-function listar()
+async function listar()
 {
+    let retorno = await db.find({});
+    return await retorno.toArray();
+}
 
+module.exports = {
+    listar: listar,
+    alterar: alterar,
+    deletar: deletar,
+    cadastrar: cadastrar
 }
