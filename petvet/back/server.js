@@ -3,8 +3,10 @@ const app = express();
 
 const servico = require("./controller/servico");
 
-app.use("/servico", servico);
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
 
+app.use("/servico", servico);
 
 app.listen(3003, function(){
     console.log("servidor iniciado");

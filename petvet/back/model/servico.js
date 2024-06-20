@@ -11,6 +11,8 @@ const database = "edir";
 const mongo = new mongodb.MongoClient(url_con);
 const db =  mongo.db(database).collection("servicos");
 
+const ObjectId = mongodb.ObjectId;
+
 /**
  * Cadastra um novo serviço
  * @param {Object} dados 
@@ -28,9 +30,11 @@ async function cadastrar(dados)
  * Deleta o serviço informado
  * @param {string} id 
  */
-function deletar(id)
+async function deletar(id)
 {
-
+    let novo = new ObjectId(id);
+    return await db.deleteOne({_id: novo});
+    
 }
 
 /**
@@ -45,6 +49,7 @@ function alterar(id, novo)
 
 /**
  * Lista todos os serviços
+ * @returns Array
  */
 async function listar()
 {
