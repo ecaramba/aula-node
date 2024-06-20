@@ -13,7 +13,7 @@ const db =  mongo.db(database).collection("servicos");
 
 /**
  * Cadastra um novo serviço
- * @param {object} dados 
+ * @param {Object} dados 
  */
 async function cadastrar(dados)
 {
