@@ -4,6 +4,7 @@ const route = express.Router();
 const cadServico = require("../model/servico").cadastrar;
 const listar = require("../model/servico").listar;
 const deletar = require("../model/servico").deletar;
+const atualizar = require("../model/servico").alterar;
 
 route.post("/novo", async function(req, res){
 
@@ -29,11 +30,16 @@ route.post("/deletar/:id", async function(req, res){
     res.json(retorno);
 });
 
-route.post("/alterar/:id", function(req, res) {
+route.post("/alterar/:id", async function(req, res) {
     let id = req.params["id"];
     let novo = req.body;
-
-    res.json(novo);
+    try {
+        let retorno = await atualizar(id, novo);
+        res.json(retorno);
+    } catch (erro) {
+       
+        res.status(500).send(erro.message);
+    }
 
 });
 

@@ -42,8 +42,18 @@ async function deletar(id)
  * @param {string} id 
  * @param {object} novo 
  */
-function alterar(id, novo)
+async function alterar(id, novo)
 {
+    novo.data_alterado = new Date();
+    
+    let novoId = new ObjectId(id);
+    let atualizacao = {
+        $set: novo
+    };
+
+    let retorno = await db.updateOne({_id: novoId}, atualizacao);
+
+    return retorno;
 
 }
 
