@@ -26,8 +26,12 @@ route.get("/lista", async function(req, res){
 
 route.post("/deletar/:id", async function(req, res){
     let id = req.params["id"];
-    let retorno = await deletar(id);
-    res.json(retorno);
+    try{
+        let retorno = await deletar(id);
+        res.json(retorno);
+    } catch (erro) {
+        res.status(500).send(erro.message);
+    }
 });
 
 route.post("/alterar/:id", async function(req, res) {

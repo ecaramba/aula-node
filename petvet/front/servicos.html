@@ -138,7 +138,11 @@
     </div>
   </div>
                 </div>
-<input type="hidden" />
+<input id="id-selecionado" type="hidden" />
+
+<div id="msg-erro" class="alert alert-danger d-none">
+  text  de erro
+</div>
                 <table class="table">
                   <thead>
                     <tr>
@@ -168,7 +172,7 @@
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                          <button type="button" class="btn btn-primary">Confirmar</button>
+                          <button type="button" id="bt-confirma-delete" class="btn btn-primary">Confirmar</button>
                         </div>
                       </div>
                     </div>
