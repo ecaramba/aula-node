@@ -97,7 +97,7 @@
           
             <div class="mb-3">
                 <label class="form-label">Nome do Serviço</label>
-                <input class="form-control" type="text" />
+                <input id="nome" class="form-control" type="text" />
             </div>
 
             <div>
@@ -106,24 +106,24 @@
             <div class="mb-3 input-group">
 
                 <span class="input-group-text">R$</span>
-                <input class="form-control" type="text" />
+                <input id="preco" class="form-control" type="text" />
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Funcionario</label>
-                <input class="form-control" type="text" />
+                <input id="funcionario" class="form-control" type="text" />
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Tipo do Serviço</label>
                 
                 <div class="form-check">
-                    <input class="form-check-input" name="tipo" type="radio"/>
+                    <input class="form-check-input" name="tipo" value="Pet" type="radio"/>
                     <label class="form-check-label">Pet</label>
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" name="tipo" type="radio"/>
+                    <input class="form-check-input" name="tipo" value="Vet" type="radio"/>
                     <label class="form-check-label">Veterinario</label>
                 </div>
 
@@ -132,7 +132,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary">Salvar</button>
+          <button id="bt-salvar" type="button" class="btn btn-primary">Salvar</button>
         </div>
       </div>
     </div>

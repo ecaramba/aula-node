@@ -21,6 +21,7 @@ async function cadastrar(dados)
 {
 
     dados.data_cadastro = new Date();
+    dados.preco = parseFloat(dados.preco);
 
     let retorno = await db.insertOne(dados);
     return retorno;
