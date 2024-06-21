@@ -9,6 +9,9 @@
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+    <script src="servico.js"></script>
+
 </head>
 <body>
     <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
@@ -135,8 +138,9 @@
     </div>
   </div>
                 </div>
-
+<input type="hidden" />
                 <table class="table">
+                  <thead>
                     <tr>
                         <th>Serviço</th>
                         <th>Preço</th>
@@ -144,46 +148,11 @@
                         <th>Tipo</th>
                         <th>Ação</th>
                     </tr>
-                    <tr>
-                        <td>Banho</td>
-                        <td>R$ 30.00</td>
-                        <td>Maria</td>
-                        <td>Pet</td>
-                        <td>
-                            <button class="btn btn-outline-secondary">Alterar</button>
-                            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modal-delete" >Deletar</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Banho e tosa</td>
-                        <td>R$ 50.00</td>
-                        <td>Maria</td>
-                        <td>Pet</td>
-                        <td>
-                            <button class="btn btn-outline-secondary">Alterar</button>
-                            <button class="btn btn-outline-danger">Deletar</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Consulta</td>
-                        <td>R$ 90.00</td>
-                        <td>Ana</td>
-                        <td>Veterinario</td>
-                        <td>
-                            <button class="btn btn-outline-secondary">Alterar</button>
-                            <button class="btn btn-outline-danger">Deletar</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Vacinas</td>
-                        <td>R$ 80.00</td>
-                        <td>Ana</td>
-                        <td>Vet</td>
-                        <td>
-                            <button class="btn btn-outline-secondary">Alterar</button>
-                            <button class="btn btn-outline-danger">Deletar</button>
-                        </td>
-                    </tr>
+                  </thead>
+                  <tbody id="lista-servico">
+
+                  </tbody>
+                    
                 </table>
 
                 <!-- modal delete -->
