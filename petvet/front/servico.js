@@ -1,25 +1,31 @@
 $(document).ready(function(){
 
-    $.getJSON("http://localhost:3003/servico/lista", function(dados){
-        console.log(dados);
+    listarServicos();
 
-        dados.forEach(function(item){
+    function listarServicos()
+    {
+        $.getJSON("http://localhost:3003/servico/lista", function(dados){
 
-            let novo = "<tr>"
-                +"<td>"+ item.nome +"</td>"
-                +"<td>R$ "+ item.preco.toFixed(2) +"</td>"
-                +"<td>"+ item.profissional +"</td>"
-                +"<td>"+ item.tipo +"</td>"
-                +"<td>"
-                    +'<button class="btn btn-outline-secondary">Alterar</button>'
-                    +'<button servico-id="'+ item._id +'" class="btn btn-outline-danger bt-delete" data-bs-toggle="modal" data-bs-target="#modal-delete" >Deletar</button>'
-                +"</td>"
-            +"</tr>";
+            $("#lista-servico").empty();
+            
+            dados.forEach(function(item){
 
-            $("#lista-servico").append(novo);
+                let novo = "<tr>"
+                    +"<td>"+ item.nome +"</td>"
+                    +"<td>R$ "+ item.preco.toFixed(2) +"</td>"
+                    +"<td>"+ item.profissional +"</td>"
+                    +"<td>"+ item.tipo +"</td>"
+                    +"<td>"
+                        +'<button class="btn btn-outline-secondary">Alterar</button>'
+                        +'<button servico-id="'+ item._id +'" class="btn btn-outline-danger bt-delete" data-bs-toggle="modal" data-bs-target="#modal-delete" >Deletar</button>'
+                    +"</td>"
+                +"</tr>";
 
-        }); // fim do foreach
-    }); //fim do getJson
+                $("#lista-servico").append(novo);
+
+            }); // fim do foreach
+        }); //fim do getJson
+    }
 
     // event listener
     $("#lista-servico").on("click", ".bt-delete", function(){
@@ -33,7 +39,9 @@ $(document).ready(function(){
 
         
         $.post("http://localhost:3003/servico/deletar/"+ id, function(retorno){
-            console.log(retorno);
+            $("#modal-delete").modal('hide');
+            $("#msg-sucesso").removeClass("d-none");
+            listarServicos();
         }).fail(function(erro){
             $("#msg-erro").removeClass("d-none");
             $("#msg-erro").html(erro.responseText);
