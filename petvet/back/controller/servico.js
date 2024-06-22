@@ -24,6 +24,16 @@ route.get("/lista", async function(req, res){
     res.json(retorno);
 });
 
+route.get("/ler/:id", async function(req, res){
+    let id = req.params["id"];
+    try {
+        let retorno = await listar(id);
+        res.json(retorno);
+    } catch (erro) {
+        res.status(500).send(erro.message);
+    }
+});
+
 route.post("/deletar/:id", async function(req, res){
     let id = req.params["id"];
     try{

@@ -60,12 +60,18 @@ async function alterar(id, novo)
 
 /**
  * Lista todos os serviços
- * @returns Array
+ * @param {string} id | null 
+ * @returns Array | Object
  */
-async function listar()
+async function listar(id)
 {
-    let retorno = await db.find({});
-    return await retorno.toArray();
+    if (!id) {
+        let retorno = await db.find({});
+        return await retorno.toArray();
+    } else {
+        let retorno = await db.findOne({_id: new ObjectId(id)});
+        return retorno;
+    }
 }
 
 module.exports = {
