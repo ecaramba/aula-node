@@ -2,9 +2,12 @@ $(document).ready(function(){
 
     listarServicos();
 
+    let ambiente  = (location.hostname == "localhost")? "dev" : "prod";
+    let servidor = (ambiente == prod)? "https://petvet-back.onrender.com": "http://localhost:3003";
+
     function listarServicos()
     {
-        $.getJSON("http://localhost:3003/servico/lista", function(dados){
+        $.getJSON(servidor + "/servico/lista", function(dados){
 
             $("#lista-servico").empty();
 
@@ -38,7 +41,7 @@ $(document).ready(function(){
         let id = $(this).attr("servico-id");
         $("#id-selecionado").val(id);
 
-        $.getJSON("http://localhost:3003/servico/ler/"+id, function(retorno){
+        $.getJSON(servidor + "/servico/ler/"+id, function(retorno){
             $("#modal-cadastrar").modal('show');
             $("#nome").val(retorno.nome);
             $("#preco").val(retorno.preco.toFixed(2));
@@ -60,7 +63,7 @@ $(document).ready(function(){
         let id = $("#id-selecionado").val();
 
         
-        $.post("http://localhost:3003/servico/deletar/"+ id, function(retorno){
+        $.post(servidor + "/servico/deletar/"+ id, function(retorno){
             $("#modal-delete").modal('hide');
             $("#msg-sucesso").removeClass("d-none");
             listarServicos();
@@ -81,7 +84,7 @@ $(document).ready(function(){
             "tipo": $('[name="tipo"]:checked').val(),
           };
 
-          $.post("http://localhost:3003/servico/novo", novo, function(){
+          $.post(servidor + "/servico/novo", novo, function(){
               $("#msg-sucesso").removeClass("d-none");
               $("#msg-sucesso").html("O serviço foi cadastrado");
               $("#modal-cadastrar").modal('hide');
@@ -108,7 +111,7 @@ $(document).ready(function(){
             "tipo": $('[name="tipo"]:checked').val(),
           };
 
-          $.post("http://localhost:3003/servico/alterar/"+id, novo, function(){
+          $.post(servidor + "/servico/alterar/"+id, novo, function(){
               $("#msg-sucesso").removeClass("d-none");
               $("#msg-sucesso").html("O serviço foi cadastrado");
               $("#modal-cadastrar").modal('hide');
