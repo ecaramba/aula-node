@@ -24,7 +24,7 @@ app.use("/servico", servico);
 
 app.listen(porta, function(){
     console.log("servidor iniciado");
-    console.log(env);
+    // console.log(process.env);
 });
 
 // MVC

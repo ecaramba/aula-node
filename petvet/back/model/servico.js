@@ -5,8 +5,8 @@
 // Delete -> Deletar
 
 const mongodb = require("mongodb");
-const url_con = "mongodb+srv://aulanode:node123@turma-junho.68fqkvo.mongodb.net/";
-const database = "edir";
+const url_con = process.env.URL_MONGO;
+const database = process.env.DATABASE;
 
 const mongo = new mongodb.MongoClient(url_con);
 const db =  mongo.db(database).collection("servicos");
