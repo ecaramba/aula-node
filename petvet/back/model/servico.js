@@ -46,6 +46,7 @@ async function deletar(id)
 async function alterar(id, novo)
 {
     novo.data_alterado = new Date();
+    novo.preco = parseFloat(novo.preco);
     
     let novoId = new ObjectId(id);
     let atualizacao = {
