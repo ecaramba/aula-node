@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 
 const servico = require("./controller/servico");
+const usuario = require("./controller/usuario")
 
 const env = process.env.AMBIENTE;
 
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 
 app.use("/servico", servico);
+app.use("/usuario", usuario);
 
 app.listen(porta, function(){
     console.log("servidor iniciado");

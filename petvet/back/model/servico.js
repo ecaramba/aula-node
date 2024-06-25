@@ -5,11 +5,9 @@
 // Delete -> Deletar
 
 const mongodb = require("mongodb");
-const url_con = process.env.URL_MONGO;
-const database = "edir";
+const conf = require("./conf");
 
-const mongo = new mongodb.MongoClient(url_con);
-const db =  mongo.db(database).collection("servicos");
+const db =  conf.collection("servicos");
 
 const ObjectId = mongodb.ObjectId;
 
